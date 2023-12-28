@@ -1,0 +1,132 @@
+﻿@using FoodOrdering63131236.Models;
+@using PagedList.Mvc;
+@model PagedList.PagedList<BAIVIET>
+@{
+    ViewBag.Title = "Product_List";
+}
+
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <div class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1 class="m-0">Danh sách món ăn</h1>
+                </div><!-- /.col -->
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="#">Home</a></li>
+                        <li class="breadcrumb-item active">Danh sách món ăn</li>
+                    </ol>
+                </div><!-- /.col -->
+            </div><!-- /.row -->
+        </div><!-- /.container-fluid -->
+    </div>
+    <!-- /.content-header -->
+    <!-- /.row -->
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                @using (Html.BeginForm("Search_Blog", "BaiViets63131236", FormMethod.Get))
+                {
+
+                    <div class="card-header">
+                        <h3 class="card-title">Danh sách món ăn</h3>
+                        <div class="card-tools">
+                            <div class="input-group input-group-sm" style="width: 150px;">
+                                <input type="text" name="search" class="form-control float-right" placeholder="Search">
+
+                                <div class="input-group-append">
+                                    <button type="submit" class="btn btn-default">
+                                        <i class="fas fa-search"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+                <!-- /.card-header -->
+                <div class="card-body table-responsive p-0">
+                    <table class="table table-hover text-nowrap">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Tên bài viêt</th>
+                                <th>Ảnh bài viết</th>
+                                <th>Ngày đăng</th>
+                                <th>Ngày cập nhật</th>
+                                <th>Lượt xem</th>
+                                <th>Trạng thái</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (BAIVIET baiViet in Model)
+                            {
+                                <tr>
+                                    <td>@baiViet.ID</td>
+                                    <td>@baiViet.TenBV</td>
+                                    <td><img src="@baiViet.ANH.Url" height="30px" /></td>
+                                    <td>@baiViet.NgayDang.ToString("dd/MM/yyyy")</td>
+                                    <td>@baiViet.NgayCapNhat.ToString("dd/MM/yyyy")</td>
+                                    <td>@baiViet.SoLanDoc</td>
+                                    @if (baiViet.HienThi)
+                                    {
+                                        <td style="color:lawngreen">Đã đăng</td>
+                                    }
+                                    else
+                                    {
+                                        <td style="color:firebrick">Nháp</td>
+                                    }
+                                    <td>
+                                        <div class="dropdown">
+                                            <span class="dropdown-toggle" style="cursor:pointer" data-toggle="dropdown">
+                                                <i class="fas fa-edit"></i>
+                                            </span>
+                                            <div class="dropdown-menu">
+                                                <a href="@Url.Action("Edit_Blog","BaiViets63131236", routeValues: new {id = baiViet.ID, })" class="dropdown-item">Sửa</a>
+                                                <a href="@Url.Action("Remove_Blog","BaiViets63131236", routeValues: new {id = baiViet.ID, })" class="dropdown-item">Xóa</a>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            }
+
+                        </tbody>
+                    </table>
+                </div>
+                <!-- /.card-body -->
+                <div class="card-header">
+                    <div class="card-tools">
+                        @if (ViewBag.search != null)
+                        {
+                            @Html.PagedListPager(Model, page => Url.Action("Search_Product", "BaiViets63131236", routeValues: new { search = ViewBag.search, page = page }),
+                                                            new PagedListRenderOptions
+                                                            {
+                                                                DisplayLinkToIndividualPages = true,
+                                                                MaximumPageNumbersToDisplay = 3,
+                                                                LiElementClasses = new string[] { "page-item", "page-link" },
+                                                                UlElementClasses = new string[] { "pagination", "pagination-sm", "m-0", "float-right" },
+                                                            })
+                        }
+                        else
+                        {
+                            @Html.PagedListPager(Model, page => Url.Action("Blog_List", "BaiViets63131236", routeValues: new { search = ViewBag.search, page = page }),
+                                                            new PagedListRenderOptions
+                                                            {
+                                                                DisplayLinkToIndividualPages = true,
+                                                                MaximumPageNumbersToDisplay = 3,
+                                                                LiElementClasses = new string[] { "page-item", "page-link" },
+                                                                UlElementClasses = new string[] { "pagination", "pagination-sm", "m-0", "float-right" },
+                                                            })
+                        }
+
+                    </div>
+                </div>
+            </div>
+            <!-- /.card -->
+        </div>
+    </div>
+    <!-- /.row -->
+</div>
+

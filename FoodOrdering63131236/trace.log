@@ -1,0 +1,79 @@
+Test
+Test
+Test
+FoodOrdering63131236.Models.MONAN
+SELECT TOP (4) 
+    [Extent1].[ID] AS [ID], 
+    [Extent1].[MaLoai] AS [MaLoai], 
+    [Extent1].[TenMA] AS [TenMA], 
+    [Extent1].[TenDuongDan] AS [TenDuongDan], 
+    [Extent1].[TomTat] AS [TomTat], 
+    [Extent1].[NgayDangMA] AS [NgayDangMA], 
+    [Extent1].[GiaBan] AS [GiaBan], 
+    [Extent1].[GiaKM] AS [GiaKM], 
+    [Extent1].[Dvt] AS [Dvt], 
+    [Extent1].[SoLuong] AS [SoLuong], 
+    [Extent1].[AnhBia] AS [AnhBia], 
+    [Extent1].[NdMon] AS [NdMon], 
+    [Extent1].[LuotXem] AS [LuotXem], 
+    [Extent1].[LuotMua] AS [LuotMua], 
+    [Extent1].[DangMA] AS [DangMA]
+    FROM [dbo].[MONAN] AS [Extent1]
+    WHERE ([Extent1].[GiaKM] < [Extent1].[GiaBan]) AND ([Extent1].[DangMA] = 1)
+SELECT TOP (4) 
+    [Extent1].[ID] AS [ID], 
+    [Extent1].[MaLoai] AS [MaLoai], 
+    [Extent1].[TenMA] AS [TenMA], 
+    [Extent1].[TenDuongDan] AS [TenDuongDan], 
+    [Extent1].[TomTat] AS [TomTat], 
+    [Extent1].[NgayDangMA] AS [NgayDangMA], 
+    [Extent1].[GiaBan] AS [GiaBan], 
+    [Extent1].[GiaKM] AS [GiaKM], 
+    [Extent1].[Dvt] AS [Dvt], 
+    [Extent1].[SoLuong] AS [SoLuong], 
+    [Extent1].[AnhBia] AS [AnhBia], 
+    [Extent1].[NdMon] AS [NdMon], 
+    [Extent1].[LuotXem] AS [LuotXem], 
+    [Extent1].[LuotMua] AS [LuotMua], 
+    [Extent1].[DangMA] AS [DangMA]
+    FROM [dbo].[MONAN] AS [Extent1]
+    WHERE ([Extent1].[MaLoai] = @p__linq__0) AND ([Extent1].[DangMA] = 1)
+Test
+49
+FoodOrdering63131236.Models.MONAN
+SELECT TOP (4) 
+    [Extent1].[ID] AS [ID], 
+    [Extent1].[MaLoai] AS [MaLoai], 
+    [Extent1].[TenMA] AS [TenMA], 
+    [Extent1].[TenDuongDan] AS [TenDuongDan], 
+    [Extent1].[TomTat] AS [TomTat], 
+    [Extent1].[NgayDangMA] AS [NgayDangMA], 
+    [Extent1].[GiaBan] AS [GiaBan], 
+    [Extent1].[GiaKM] AS [GiaKM], 
+    [Extent1].[Dvt] AS [Dvt], 
+    [Extent1].[SoLuong] AS [SoLuong], 
+    [Extent1].[AnhBia] AS [AnhBia], 
+    [Extent1].[NdMon] AS [NdMon], 
+    [Extent1].[LuotXem] AS [LuotXem], 
+    [Extent1].[LuotMua] AS [LuotMua], 
+    [Extent1].[DangMA] AS [DangMA]
+    FROM [dbo].[MONAN] AS [Extent1]
+    WHERE ([Extent1].[GiaKM] < [Extent1].[GiaBan]) AND ([Extent1].[DangMA] = 1)
+SELECT TOP (4) 
+    [Extent1].[ID] AS [ID], 
+    [Extent1].[MaLoai] AS [MaLoai], 
+    [Extent1].[TenMA] AS [TenMA], 
+    [Extent1].[TenDuongDan] AS [TenDuongDan], 
+    [Extent1].[TomTat] AS [TomTat], 
+    [Extent1].[NgayDangMA] AS [NgayDangMA], 
+    [Extent1].[GiaBan] AS [GiaBan], 
+    [Extent1].[GiaKM] AS [GiaKM], 
+    [Extent1].[Dvt] AS [Dvt], 
+    [Extent1].[SoLuong] AS [SoLuong], 
+    [Extent1].[AnhBia] AS [AnhBia], 
+    [Extent1].[NdMon] AS [NdMon], 
+    [Extent1].[LuotXem] AS [LuotXem], 
+    [Extent1].[LuotMua] AS [LuotMua], 
+    [Extent1].[DangMA] AS [DangMA]
+    FROM [dbo].[MONAN] AS [Extent1]
+    WHERE ([Extent1].[MaLoai] = @p__linq__0) AND ([Extent1].[DangMA] = 1)

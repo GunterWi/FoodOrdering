@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="ec9c7d960ba74904b02b88c14d181e92" Name="Diagram1" ZoomLevel="72">
+        <EntityTypeShape EntityType="FoodOrdering_63131236Model.ANH" Width="1.5" PointX="0.75" PointY="8.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="FoodOrdering_63131236Model.BAIVIET" Width="1.5" PointX="3" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="FoodOrdering_63131236Model.BINHLUAN" Width="1.5" PointX="8.25" PointY="11.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="FoodOrdering_63131236Model.CHITIETDH" Width="1.5" PointX="11.25" PointY="11.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="FoodOrdering_63131236Model.DANHMUC" Width="1.5" PointX="1.5" PointY="2.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="FoodOrdering_63131236Model.DONHANG" Width="1.5" PointX="5.25" PointY="14.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="FoodOrdering_63131236Model.LOAIMON" Width="1.5" PointX="3.75" PointY="2.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="FoodOrdering_63131236Model.MONAN" Width="1.5" PointX="6" PointY="6.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="FoodOrdering_63131236Model.PHUONGXA" Width="1.5" PointX="3" PointY="11.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="FoodOrdering_63131236Model.QUANHUYEN" Width="1.5" PointX="0.75" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="FoodOrdering_63131236Model.TAIKHOAN" Width="1.5" PointX="3" PointY="14.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="FoodOrdering_63131236Model.TINHTHANH" Width="1.5" PointX="1.5" PointY="20" IsExpanded="true" />
+        <AssociationConnector Association="FoodOrdering_63131236Model.FK__BAIVIET__AnhBia__398D8EEE" ManuallyRouted="false" />
+        <AssociationConnector Association="FoodOrdering_63131236Model.FK__MONAN__AnhBia__33D4B598" ManuallyRouted="false" />
+        <AssociationConnector Association="FoodOrdering_63131236Model.FK__TAIKHOAN__Avatar__36B12243" ManuallyRouted="false" />
+        <AssociationConnector Association="FoodOrdering_63131236Model.FK__BINHLUAN__MaMA__403A8C7D" ManuallyRouted="false" />
+        <AssociationConnector Association="FoodOrdering_63131236Model.FK__BINHLUAN__MaTK__412EB0B6" ManuallyRouted="false" />
+        <AssociationConnector Association="FoodOrdering_63131236Model.FK__BINHLUAN__PhanHo__4222D4EF" ManuallyRouted="false" />
+        <AssociationConnector Association="FoodOrdering_63131236Model.FK__CHITIETDH__MaDH__4AB81AF0" ManuallyRouted="false" />
+        <AssociationConnector Association="FoodOrdering_63131236Model.FK__CHITIETDH__MaMA__4BAC3F29" ManuallyRouted="false" />
+        <AssociationConnector Association="FoodOrdering_63131236Model.FK__LOAIMON__ID_Danh__267ABA7A" ManuallyRouted="false" />
+        <AssociationConnector Association="FoodOrdering_63131236Model.FK__DONHANG__KhachHa__44FF419A" ManuallyRouted="false" />
+        <AssociationConnector Association="FoodOrdering_63131236Model.FK__DONHANG__MaPhuon__45F365D3" ManuallyRouted="false" />
+        <AssociationConnector Association="FoodOrdering_63131236Model.FK__DONHANG__MaQuan__46E78A0C" ManuallyRouted="false" />
+        <AssociationConnector Association="FoodOrdering_63131236Model.FK__DONHANG__MaTP__47DBAE45" ManuallyRouted="false" />
+        <AssociationConnector Association="FoodOrdering_63131236Model.FK__MONAN__MaLoai__32E0915F" ManuallyRouted="false" />
+        <AssociationConnector Association="FoodOrdering_63131236Model.FK__PHUONGXA__QuanHu__2E1BDC42" ManuallyRouted="false" />
+        <AssociationConnector Association="FoodOrdering_63131236Model.FK__QUANHUYEN__TinhT__2B3F6F97" ManuallyRouted="false" />
+        <AssociationConnector Association="FoodOrdering_63131236Model.THUVIENANHMA" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

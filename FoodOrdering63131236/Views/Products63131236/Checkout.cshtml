@@ -1,0 +1,236 @@
+﻿@using FoodOrdering63131236.Models
+@model DONHANG
+@{
+    ViewBag.Title = "Checkout";
+}
+
+
+<section id="cart_items">
+    <div class="container">
+        <div class="breadcrumbs">
+            <ol class="breadcrumb">
+                <li><a href="#">Home</a></li>
+                <li class="active">Check out</li>
+            </ol>
+        </div><!--/breadcrums-->
+
+        <!--<div class="step-one">
+            <h2 class="heading">Step1</h2>
+        </div>
+        <div class="checkout-options">
+            <h3>New User</h3>
+            <p>Checkout options</p>
+            <ul class="nav">
+                <li>
+                    <label><input type="checkbox"> Register Account</label>
+                </li>
+                <li>
+                    <label><input type="checkbox"> Guest Checkout</label>
+                </li>
+                <li>
+                    <a href=""><i class="fa fa-times"></i>Cancel</a>
+                </li>
+            </ul>
+        </div>--><!--/checkout-options-->
+
+        <!--<div class="register-req">
+            <p>Please use Register And Checkout to easily get access to your order history, or use Checkout as Guest</p>
+        </div>--><!--/register-req-->
+
+        <div class="shopper-informations">
+            @using (Html.BeginForm(FormMethod.Post))
+            {
+                FoodOrdering_63131236Entities db = new FoodOrdering_63131236Entities();
+                List<SelectListItem> selectLists = new List<SelectListItem>();
+                foreach (TINHTHANH tinhThanh in db.TINHTHANHs.OrderBy(x => x.Name))
+                {
+                    selectLists.Add(new SelectListItem() { Text = tinhThanh.Name, Value = tinhThanh.ID.ToString() });
+                }
+                <div class="row">
+                    <div class="col-sm-5 clearfix">
+                        <div class="bill-to">
+                            <p>Địa chỉ</p>
+                            <div class="form-one">
+                                @Html.LabelFor(m => m.MaTP, "Tỉnh thành")
+                                @Html.DropDownListFor(m => m.MaTP, selectLists, "--Select--")
+                                @Html.LabelFor(m => m.MaQuan, "Quận huyện")
+                                @Html.DropDownListFor(m => m.MaQuan, new List<SelectListItem>(), "--Select--")
+                                @Html.LabelFor(m => m.MaPhuong, "Phường xã")
+                                @Html.DropDownListFor(m => m.MaPhuong, new List<SelectListItem>(), "--Select--")
+                                @Html.LabelFor(m => m.DcGiaoHang, "Địa chỉ")
+                                @Html.TextBoxFor(m => m.DcGiaoHang, new { placeholder = "Địa chỉ" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="order-message">
+                            <p>Ghi chú</p>
+                            @Html.TextAreaFor(m => m.GhiChuKhach)
+                            <label>@Html.CheckBoxFor(m => m.XuatHD) Xuất hóa đơn</label>
+                            <button type="submit" class="btn btn-warning btn-block">Thanh toán</button>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+        <div class="review-payment">
+            <h2>Danh sách giỏ hàng</h2>
+        </div>
+
+        <div class="table-responsive cart_info">
+            <table class="table table-condensed">
+                <thead>
+                    <tr class="cart_menu">
+                        <td class="image">món ăn</td>
+                        <td class="description"></td>
+                        <td class="price">Giá</td>
+                        <td class="quantity">Số lượng</td>
+                        <td class="total">Tổng cộng</td>
+                        <td></td>
+                    </tr>
+                </thead>
+                <tbody>
+                    @{ List<GioHang> gioHangs = GioHang.GetGioHang();}
+                    @foreach (GioHang gioHang in gioHangs)
+                    {
+                        int gia = gioHang.monAn.GiaKM ?? gioHang.monAn.GiaBan;
+                        <tr tr="@gioHang.monAn.ID">
+                            <td class="cart_product">
+                                <a href=""><img src="@gioHang.monAn.ANH.Url" alt="" width="110px"></a>
+                            </td>
+                            <td class="cart_description">
+                                <h4><a href="@Url.Action("Product","Products63131236",routeValues: new {id = gioHang.monAn.TenDuongDan })">@gioHang.monAn.TenMA</a></h4>
+                                <p>Loại: @gioHang.monAn.LOAIMON.TenLoai</p>
+                            </td>
+                            <td class="cart_price">
+                                <p gia="@gia" sp_gia="@gioHang.monAn.ID">@gia vnd</p>
+                            </td>
+                            <td class="cart_quantity">
+                                <div class="cart_quantity_button">
+                                    <button class="cart_quantity_up" onclick="up(@gioHang.monAn.ID,this)"> + </button>
+                                    <input class="cart_quantity_input" type="number" name="quantity" value="@gioHang.soLuon" autocomplete="off" size="2" onchange="input(@gioHang.monAn.ID,this)" />
+                                    <button class="cart_quantity_down" onclick="down(@gioHang.monAn.ID,this)"> - </button>
+                                </div>
+                            </td>
+                            <td class="cart_total">
+                                <p tt="@gioHang.monAn.ID" class="cart_total_price">@gioHang.tongCong vnd</p>
+                            </td>
+                            <td class="cart_delete">
+                                <button type="button" onclick="deleted(@gioHang.monAn.ID,this)" class="cart_quantity_delete" href=""><i class="fa fa-times"></i></button>
+                            </td>
+                        </tr>
+                    }
+                    <tr>
+                        <td></td>
+                        <td class="cart_description"><h4>Tổng cộng:</h4></td>
+                        <td></td>
+                        <td></td>
+                        <td class="cart_total"><p tc="tong_cong" class="cart_total_price"></p></td>
+                        <td></td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+        <div class="payment-options">
+            <span>
+                <label><input type="checkbox"> Direct Bank Transfer</label>
+            </span>
+            <span>
+                <label><input type="checkbox"> Check Payment</label>
+            </span>
+            <span>
+                <label><input type="checkbox"> Paypal</label>
+            </span>
+        </div>
+    </div>
+</section> <!--/#cart_items-->
+@section js{
+    <script>
+        $("#MaTP").change(function () {
+            let id = $(this).val()
+            ajax(id, 1)
+        })
+        $("#MaQuan").change(function () {
+            let id = $(this).val()
+            ajax(id, 2)
+        })
+        function ajax(id, type) {
+            $.ajax({
+                type: "POST",
+                url: '@Url.Action("TinhThanh", "Products63131236")',
+                data: JSON.stringify({ type: type, id: id }),
+                dataType: "json",
+                contentType: 'application/json; charset=utf-8',
+                success: function (data) {
+                    if (type == 1) {
+                        $("#MaQuan").html("")
+                        $("#MaPhuong").html("")
+                        let i = 0
+                        while (i < data.Value.length) {
+                            $("#MaQuan").append(new Option(data.Value[i], data.ID[i]));
+                            i++
+                        }
+                    } else if (type == 2) {
+                        $("#MaPhuong").html("")
+                        let i = 0
+                        while (i < data.Value.length) {
+                            $("#MaPhuong").append(new Option(data.Value[i], data.ID[i]));
+                            i++
+                        }
+                    }
+                },
+                error: function () {
+                    alert("Error occured!!")
+                }
+            })
+        }
+    </script>
+    <script>function up(id, ev) {
+            increaseGioHang(id)
+            let input = $(ev).next()
+            let val = parseInt(input.val())
+            input.val(val + 1)
+            let gia = $("[sp_gia=" + id + "]").attr("gia")
+            $("[tt=" + id + "]").text((gia * input.val()) + " vnd")
+            tongcong()
+        }
+        function down(id, ev) {
+            let input = $(ev).prev()
+            let val = parseInt(input.val())
+            if (val <= 0) return
+            reductionGioHang(id)
+            input.val(val - 1)
+            let gia = $("[sp_gia=" + id + "]").attr("gia")
+            $("[tt=" + id + "]").text((gia * input.val()) + " vnd")
+            tongcong()
+        }
+        function input(id, ev) {
+            let val = $(ev).val()
+            addGioHang(id, val)
+            let gia = $("[sp_gia=" + id + "]").attr("gia")
+            $("[tt=" + id + "]").text((gia * val) + " vnd")
+            tongcong()
+        }
+        function deleted(id, ev) {
+            dropGioHang(id, function () {
+                $("[tr=" + id + "]").fadeOut();
+            });
+            tongcong()
+        }
+        function tongcong() {
+            let tc = 0
+            debugger
+            $("[tt]").each(function () {
+                tc += parseInt($(this).text().substring(0, $(this).text().length - 4))
+            })
+            $("[tc=tong_cong]").text(tc + " vnd")
+        }
+        tongcong()</script>
+    @if (ViewBag.msg != null)
+    {
+        <script>
+            alert('@Html.Raw(ViewBag.msg)')
+        </script>
+    }
+}

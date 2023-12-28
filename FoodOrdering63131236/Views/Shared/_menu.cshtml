@@ -1,0 +1,78 @@
+﻿@using FoodOrdering63131236.Models
+@{ Trash_63131236 loaiMon = (Trash_63131236)HttpContext.Current.Application["DungChung"]; }
+@{
+    ViewBag.Title = "_Menu";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    using (FoodOrdering_63131236Entities db = new FoodOrdering_63131236Entities())
+    {
+        //lấy số tiền lớn nhất
+        var maxmoney = db.MONANs.Max(sp => sp.GiaBan);
+        ViewBag.max = maxmoney;
+    }
+}
+@section css{
+    @RenderSection("css", required: false)
+}
+@section Banner{
+    @RenderSection("Banner", required: false)
+}
+@section js{
+    @RenderSection("js", required: false)
+}
+<!--Menu Category-->
+<div class="col-sm-3">
+    <div class="left-sidebar">
+        <h2>Danh mục</h2>
+        <div class="panel-group category-products" id="accordian">
+            <!--category-productsr-->
+            @foreach (DANHMUC lopDanhMuc in loaiMon.GetDanhMuc())
+            {
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a data-toggle="collapse" data-parent="#accordian" href="#menu@{@lopDanhMuc.ID}">
+                                @if (lopDanhMuc.LOAIMONs.Count > 0)
+                                {
+                                    <span class="badge pull-right"><i class="fa fa-plus"></i></span>
+                                }
+                                @lopDanhMuc.TenDanhMuc
+                            </a>
+                        </h4>
+                    </div>
+                    @if (lopDanhMuc.LOAIMONs.Count > 0)
+                    {
+                        <div id="menu@{@lopDanhMuc.ID}" class="panel-collapse collapse">
+                            <div class="panel-body">
+                                <ul>
+                                    @foreach (LOAIMON lspCon in lopDanhMuc.LOAIMONs)
+                                    {
+                                        <li><a href="@Url.Action("Category","Products63131236",routeValues: new{id=lspCon.TenDuongDan,})">@lspCon.TenLoai </a></li>
+                                    }
+                                </ul>
+                            </div>
+                        </div>
+                    }
+                </div>
+            }
+        </div><!--/category-products-->
+
+        <div class="price-range">
+            <!--price-range-->
+            <h2>Khung giá</h2>
+            <div class="well text-center">
+                @using (Html.BeginForm("price_filter", "Products63131236"))
+                {
+                    <input type="text" name="price" class="span2" value="" data-slider-min="0" data-slider-max="@ViewBag.max" data-slider-step="5" data-slider-value="[250,450]" id="sl2"><br />
+                    <button class="btn btn-danger" type="submit">Lọc</button>
+                }
+                <b class="pull-left">0</b> <b class="pull-right">@ViewBag.max</b>
+            </div>
+        </div><!--/price-range-->
+
+        <div class="shipping text-center">
+            <!--shipping-->
+            <img src="images/home/shipping.jpg" alt="" />
+        </div><!--/shipping-->
+    </div>
+</div>
+@RenderBody()

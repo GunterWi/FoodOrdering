@@ -1,0 +1,185 @@
+﻿@model FoodOrdering63131236.Models.TAIKHOAN
+@{
+    ViewBag.Title = "UserProfile";
+}
+
+@section css{
+    <style>
+        .profile-user-img {
+            object-fit: cover;
+            width: 150px;
+            height: 150px;
+            margin-bottom: 10px;
+        }
+
+        .form-group {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start; /* Align group to the left */
+            margin-bottom: 0.5rem;
+        }
+
+            .form-group label {
+                width: 30%; /* Label width */
+                margin-right: 1rem; /* Space between label and input */
+                text-align: left;
+            }
+
+        .btn-submit {
+            width: 100%; /* Match input width */
+            /*margin-right: 18%;*/ /* Align with inputs */
+            margin-top: 1rem;
+        }
+
+        .profile-user-img {
+            margin-bottom: 1rem;
+        }
+
+        #avatarFile {
+            margin-bottom: 1rem;
+        }
+
+        .form-horizontal .form-group {
+            margin-left: 0;
+            margin-right: 0;
+        }
+    </style>
+}
+
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1>Profile</h1>
+                </div>
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="#">Home</a></li>
+                        <li class="breadcrumb-item active">User Profile</li>
+                    </ol>
+                </div>
+            </div>
+        </div><!-- /.container-fluid -->
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <!-- Profile Card -->
+                    <div class="card card-primary card-outline">
+                        <div class="card-body box-profile">
+                            @using (Html.BeginForm("AddUser", "TaiKhoans63131236", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                            {
+                                @Html.AntiForgeryToken()
+
+                                <div class="row">
+                                    <!-- Left side with profile image -->
+                                    <div class="col-md-4 text-center">
+                                        <img id="avatarPreview" class="profile-user-img img-fluid img-circle" src="@ViewBag.Avatar" alt="User profile picture">
+                                        <input type="file" id="avatarFile" name="avatarFile" class="form-control" onchange="showPreview(event);">
+                                    </div>
+                                    <!-- Right side with form inputs -->
+                                    <div class="col-md-8">
+                                        <!-- MatKhau Field -->
+                                        <div class="form-group">
+                                            @Html.LabelFor(m => m.TenTK, "Tên tài khoản")
+                                            @Html.ValidationMessageFor(m => m.TenTK, "", new { @class = "text-danger" })
+                                            @Html.TextBoxFor(m => m.TenTK, new { @class = "form-control", placeholder = "Nhập tên tài khoản", required = "" })
+                                        </div>
+                                        <div class="form-group">
+                                            @Html.LabelFor(m => m.MatKhau, "Mật khẩu")
+                                            @Html.ValidationMessageFor(m => m.MatKhau, "", new { @class = "text-danger" })
+                                            @Html.PasswordFor(m => m.MatKhau, new { @class = "form-control", placeholder = "Nhập mật khẩu", required = "" })
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Xác nhận mật khẩu</label>
+                                            @Html.Password("ConfirmPassword", "", new { @class = "form-control", placeholder = "Nhập xác nhận mật khẩu", required = "" })
+                                        </div>
+                                        <div class="form-group">
+                                            @Html.LabelFor(m => m.HoTen, "Họ và tên")
+                                            @Html.ValidationMessageFor(m => m.HoTen, "", new { @class = "text-danger" })
+                                            @Html.TextBoxFor(m => m.HoTen, new { @class = "form-control", placeholder = "Nhập họ và tên", required = "" })
+                                        </div>
+                                        <div class="form-group">
+                                            @Html.LabelFor(m => m.GioiTinh, "Giới tính")
+                                            <div class="checkbox">
+                                                Nam @Html.RadioButtonFor(m => m.GioiTinh, "True", new { @checked = "checked" })
+                                                Nữ @Html.RadioButtonFor(m => m.GioiTinh, "False")
+                                                @Html.ValidationMessageFor(m => m.GioiTinh, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            @Html.LabelFor(m => m.SDT, "Số điện thoại")
+                                            @Html.ValidationMessageFor(m => m.SDT, "", new { @class = "text-danger" })
+                                            @Html.TextBoxFor(m => m.SDT, new { @class = "form-control", placeholder = "Nhập số điện thoại" })
+                                        </div>
+                                        <div class="form-group">
+                                            @Html.LabelFor(m => m.Email, "Email")
+                                            @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+                                            @Html.TextBoxFor(m => m.Email, new { @class = "form-control", placeholder = "Nhập email" })
+                                        </div>
+                                        <div class="form-group">
+                                            @{
+                                                List<SelectListItem> list = new List<SelectListItem>();
+                                                list.Add(new SelectListItem { Text = "admin", Value = "admin" });
+                                                list.Add(new SelectListItem { Text = "user", Value = "user" });
+                                            }
+                                            @Html.LabelFor(m => m.VaiTro, "Vai trò")
+                                            @Html.DropDownListFor(m => m.VaiTro, list, new { @class = "form-control" })
+                                        </div>
+
+                                        <!-- Other fields -->
+                                        <!-- Submit Button -->
+                                        <div class="form-group">
+                                            <button type="submit" class="btn btn-danger btn-submit">Tạo tài khoản</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                        <!-- /.card-body -->
+                    </div>
+                    <!-- /.card -->
+                </div>
+            </div>
+            <!-- /.row -->
+        </div><!-- /.container-fluid -->
+    </section>
+    <!-- /.content -->
+</div>
+<!-- /.content-wrapper -->
+
+@section js{
+    <script>
+        function showPreview(event) {
+            if (event.target.files.length > 0) {
+                var src = URL.createObjectURL(event.target.files[0]);
+                var preview = document.getElementById("avatarPreview");
+                preview.src = src;
+                preview.style.display = "block";
+            }
+        }
+    </script>
+    <script>
+        function togglePasswordVisibility() {
+            var passwordInput = document.getElementById('password');
+            if (passwordInput.type === 'password') {
+                passwordInput.type = 'text';
+            } else {
+                passwordInput.type = 'password';
+            }
+        }
+
+        // Event listener for password visibility toggle
+        document.addEventListener('click', function (e) {
+            if (e.target.classList.contains('toggle-password')) {
+                togglePasswordVisibility();
+            }
+        }, false);
+    </script>
+}

@@ -1,0 +1,279 @@
+﻿@using FoodOrdering63131236.Models
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Home</title>
+    @Styles.Render("~/Pubilc/css")
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet" />
+    @RenderSection("css", required: false)
+    <script src="~/Asset/js/html5shiv.js"></script>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.7.2/dropzone.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.7.2/dropzone.min.js"></script>
+</head><!--/head-->
+<body>
+    <header id="header">
+        <!--header-->
+        <div class="header_top">
+            <!--header_top-->
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="contactinfo">
+                            <ul class="nav nav-pills">
+                                <li><a href="#"><i class="fa fa-phone"></i> 113</a></li>
+                                <li><a href="#"><i class="fa fa-envelope"></i> info@domain.com</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="social-icons pull-right">
+                            <ul class="nav navbar-nav">
+                                <li><a href="#"><i class="fa-brands fa-facebook"></i></a></li>
+                                <li><a href="#"><i class="fa-brands fa-x-twitter"></i></a></li>
+                                <li><a href="#"><i class="fa-brands fa-linkedin"></i></a></li>
+                                <li><a href="#"><i class="fa-brands fa-google-plus-g"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div><!--/header_top-->
+
+        <div class="header-middle">
+            <!--header-middle-->
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4 clearfix">
+                        <div class="logo">
+                            <a href="@Url.Action("Index","Homes63131236")"><img src="~/Asset/settingweb/home/logo.png" alt="" height="70" /></a>
+                        </div>
+                    </div>
+                    <div class="col-md-8 clearfix">
+                        <div class="shop-menu clearfix pull-right">
+                            <ul class="nav navbar-nav">
+                                @{
+                                    User_63131236 user = (User_63131236)HttpContext.Current.Session["Account"];
+                                }
+                                @if (user.daDangNhap)
+                                {
+                                    <li><a href="@Url.Action("ProfileUser","Users63131236")"><i class="fa fa-user"></i> @user.Account.HoTen</a></li>
+                                }
+                                else
+                                {
+                                    <li><a href="@Url.Action("Login","Users63131236")"><i class="fa fa-user"></i> Tài Khoản</a></li>
+                                }
+                                <li><a href=""><i class="fa fa-star"></i> Wishlist</a></li>
+                                <li><a href="@Url.Action("Checkout","Products63131236")"><i class="fa fa-crosshairs"></i> Thanh Toán</a></li>
+                                <li><a href="@Url.Action("Cart","Products63131236")"><i class="fa fa-shopping-cart"></i><span class="badge badge-danger navbar-badge" id="badge"></span> Giỏ Hàng</a></li>
+                                @if (user.daDangNhap)
+                                {
+                                    <li><a href="@Url.Action("Logout","Users63131236")"><i class="fa fa-lock"></i> Đăng Xuất</a></li>
+                                }
+                                else
+                                {
+                                    <li><a href="@Url.Action("Login","Users63131236")"><i class="fa fa-lock"></i> Đăng Nhập</a></li>
+                                }
+
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div><!--/header-middle-->
+
+        <div class="header-bottom">
+            <!--header-bottom-->
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-9">
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                                <span class="sr-only">Toggle navigation</span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                        </div>
+                        <div class="mainmenu pull-left">
+                            <ul class="nav navbar-nav collapse navbar-collapse">
+                                <li><a href="@Url.Action("Index","Homes63131236")" class="active">Trang chủ</a></li>
+                                <li class="dropdown">
+                                    <a href="#">Shop<i class="fa fa-angle-down"></i></a>
+                                    <ul role="menu" class="sub-menu">
+                                        <li><a href="@Url.Action("Index","Products63131236")">món ăn</a></li>
+                                        <li><a href="@Url.Action("Checkout","Products63131236")">Thanh Toán</a></li>
+                                        <li><a href="@Url.Action("Cart","Products63131236")">Giỏ hàng</a></li>
+                                        @if (user.daDangNhap)
+                                        {
+                                            <li><a href="@Url.Action("Logout","Users63131236")">Đăng Xuất</a></li>
+                                        }
+                                        else
+                                        {
+                                            <li><a href="@Url.Action("Login","Users63131236")">Đăng Nhập</a></li>
+                                        }
+                                    </ul>
+                                </li>
+                                <li><a href="@Url.Action("Index","Blogs63131236")">Bài viết</a></li>
+                                <li><a href="@Url.Action("Contact","Homes63131236")">Liên hệ</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="search_box pull-right">
+                            @using (Html.BeginForm("Search", "Products63131236", FormMethod.Get))
+                            {
+                                @Html.TextBox("search", "", new { placeholder = "Search" })
+                            }
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div><!--/header-bottom-->
+    </header><!--/header-->
+    @RenderSection("Banner", required: false)
+    <section>
+        <div class="container">
+            <div class="row">
+                @RenderBody()
+            </div>
+        </div>
+    </section>
+    <footer id="footer">
+        <!--Footer-->
+        <div class="footer-top">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-2">
+                        <div class="companyinfo">
+                            <h2><span>Vu Ngu</span>-Food</h2>
+                            <p>Khám phá Vu Ngu Food với menu đa dạng và mỗi món ăn là sự lựa chọn tuyệt vời cho bữa ăn nhanh chóng và ngon miệng. Ghé qua và thưởng thức!</p>
+                        </div>
+                    </div>
+                    <div class="col-sm-7">
+                        <div class="col-sm-3">
+                            <div class="video-gallery text-center">
+                                <a href="#">
+                                    <div class="iframe-img">
+                                        <img src="~/Asset/settingweb/home/1.jpg" alt="" />
+                                    </div>
+                                    <div class="overlay-icon">
+                                        <i class="fa fa-play-circle-o"></i>
+                                    </div>
+                                </a>
+                                <p>Food</p>
+                                <h2>24 DEC 2023</h2>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-3">
+                            <div class="video-gallery text-center">
+                                <a href="#">
+                                    <div class="iframe-img">
+                                        <img src="~/Asset/settingweb/home/2.jpg" alt="" />
+                                    </div>
+                                    <div class="overlay-icon">
+                                        <i class="fa fa-play-circle-o"></i>
+                                    </div>
+                                </a>
+                                <p>Food</p>
+                                <h2>24 DEC 2023</h2>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-3">
+                            <div class="video-gallery text-center">
+                                <a href="#">
+                                    <div class="iframe-img">
+                                        <img src="~/Asset/settingweb/home/3.jpg" alt="" />
+                                    </div>
+                                    <div class="overlay-icon">
+                                        <i class="fa fa-play-circle-o"></i>
+                                    </div>
+                                </a>
+                                <p>Food</p>
+                                <h2>24 DEC 2023</h2>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-3">
+                            <div class="video-gallery text-center">
+                                <a href="#">
+                                    <div class="iframe-img">
+                                        <img src="~/Asset/settingweb/home/4.jpg" alt="" />
+                                    </div>
+                                    <div class="overlay-icon">
+                                        <i class="fa fa-play-circle-o"></i>
+                                    </div>
+                                </a>
+                                <p>Food</p>
+                                <h2>24 DEC 2023</h2>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="address">
+                            <img src="~/Asset/settingweb/home/map.png" alt="" />
+                            <p>2 Đ. Nguyễn Đình Chiểu, Vĩnh Thọ, Nha Trang, Khánh Hòa</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="container">
+                <div class="row">
+                    <p class="pull-left">Copyright © 2023 E-SHOPPER Inc. All rights reserved.</p>
+                </div>
+            </div>
+        </div>
+    </footer><!--/Footer-->
+    @Scripts.Render("~/Public/js")
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        $(document).ready(function () {
+            $("input[name='id']").keydown(function (e) {
+                if (e.keyCode == 13) {
+                    $(this).parent().submit()
+                }
+            });
+        })</script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="~/Asset/js/gioHang.js"></script>
+    <script>
+        function setCookie(key, value) {
+            debugger
+            var expires = new Date();
+            expires.setTime(expires.getTime() + 31536000000); //1 year
+            document.cookie = key + '=' + value + ';path=/;expires=' + expires.toUTCString();
+        }
+        function getCookie(key) {
+            var keyValue = document.cookie.match('(^|;) ?' + key + '=([^;]*)(;|$)');
+            return keyValue ? keyValue[2] : null;
+        }
+        var confirmed = getCookie("confirm");
+
+        if (!confirmed) {
+            Swal.fire({
+                title: 'Hãy cho chúng tôi tiếp cận cookie của bạn?',
+                text: 'Chúng tôi muốn phục vụ bạn tốt hơn. Bạn vui lòng cho chúng tôi tiếp cận cookie của bạn',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonText: 'Đồng ý',
+                cancelButtonText: 'Hủy bỏ',
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    setCookie("confirm", true);
+                }
+            });
+        }
+        debugger
+        $("#badge").text(getGioHang().length == 0 ? "" : getGioHang().length)</script>
+    @RenderSection("js", required: false)
+</body>
+</html>

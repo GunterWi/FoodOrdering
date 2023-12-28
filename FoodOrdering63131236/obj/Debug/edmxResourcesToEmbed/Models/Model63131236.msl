@@ -1,0 +1,167 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="FoodOrdering_63131236ModelStoreContainer" CdmEntityContainer="FoodOrdering_63131236Entities">
+    <EntitySetMapping Name="ANHs">
+      <EntityTypeMapping TypeName="FoodOrdering_63131236Model.ANH">
+        <MappingFragment StoreEntitySet="ANH">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Url" ColumnName="Url" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BAIVIETs">
+      <EntityTypeMapping TypeName="FoodOrdering_63131236Model.BAIVIET">
+        <MappingFragment StoreEntitySet="BAIVIET">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="TenBV" ColumnName="TenBV" />
+          <ScalarProperty Name="TenDuongDan" ColumnName="TenDuongDan" />
+          <ScalarProperty Name="NgayDang" ColumnName="NgayDang" />
+          <ScalarProperty Name="NgayCapNhat" ColumnName="NgayCapNhat" />
+          <ScalarProperty Name="TomTat" ColumnName="TomTat" />
+          <ScalarProperty Name="AnhBia" ColumnName="AnhBia" />
+          <ScalarProperty Name="NoiDungBV" ColumnName="NoiDungBV" />
+          <ScalarProperty Name="HienThi" ColumnName="HienThi" />
+          <ScalarProperty Name="SoLanDoc" ColumnName="SoLanDoc" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BINHLUANs">
+      <EntityTypeMapping TypeName="FoodOrdering_63131236Model.BINHLUAN">
+        <MappingFragment StoreEntitySet="BINHLUAN">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="MaSP" ColumnName="MaSP" />
+          <ScalarProperty Name="MaTK" ColumnName="MaTK" />
+          <ScalarProperty Name="BinhLuan1" ColumnName="BinhLuan1" />
+          <ScalarProperty Name="PhanHoi" ColumnName="PhanHoi" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CHITIETDHs">
+      <EntityTypeMapping TypeName="FoodOrdering_63131236Model.CHITIETDH">
+        <MappingFragment StoreEntitySet="CHITIETDH">
+          <ScalarProperty Name="MaDH" ColumnName="MaDH" />
+          <ScalarProperty Name="MaSP" ColumnName="MaSP" />
+          <ScalarProperty Name="SoLuong" ColumnName="SoLuong" />
+          <ScalarProperty Name="GiaBan" ColumnName="GiaBan" />
+          <ScalarProperty Name="DanhGia" ColumnName="DanhGia" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DANHMUCs">
+      <EntityTypeMapping TypeName="FoodOrdering_63131236Model.DANHMUC">
+        <MappingFragment StoreEntitySet="DANHMUC">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="TenDanhMuc" ColumnName="TenDanhMuc" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DONHANGs">
+      <EntityTypeMapping TypeName="FoodOrdering_63131236Model.DONHANG">
+        <MappingFragment StoreEntitySet="DONHANG">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="KhachHang" ColumnName="KhachHang" />
+          <ScalarProperty Name="DcGiaoHang" ColumnName="DcGiaoHang" />
+          <ScalarProperty Name="MaPhuong" ColumnName="MaPhuong" />
+          <ScalarProperty Name="MaQuan" ColumnName="MaQuan" />
+          <ScalarProperty Name="MaTP" ColumnName="MaTP" />
+          <ScalarProperty Name="XuatHD" ColumnName="XuatHD" />
+          <ScalarProperty Name="NgayDatHang" ColumnName="NgayDatHang" />
+          <ScalarProperty Name="NgayGiaoHang" ColumnName="NgayGiaoHang" />
+          <ScalarProperty Name="ThanhCong" ColumnName="ThanhCong" />
+          <ScalarProperty Name="DvVanChuyen" ColumnName="DvVanChuyen" />
+          <ScalarProperty Name="MaVanChuyen" ColumnName="MaVanChuyen" />
+          <ScalarProperty Name="PhiShip" ColumnName="PhiShip" />
+          <ScalarProperty Name="GhiChuKhach" ColumnName="GhiChuKhach" />
+          <ScalarProperty Name="GhiChuShop" ColumnName="GhiChuShop" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LOAISPs">
+      <EntityTypeMapping TypeName="FoodOrdering_63131236Model.LOAISP">
+        <MappingFragment StoreEntitySet="LOAISP">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="TenLoai" ColumnName="TenLoai" />
+          <ScalarProperty Name="TenDuongDan" ColumnName="TenDuongDan" />
+          <ScalarProperty Name="GhiChu" ColumnName="GhiChu" />
+          <ScalarProperty Name="ID_DanhMuc" ColumnName="ID_DanhMuc" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PHUONGXAs">
+      <EntityTypeMapping TypeName="FoodOrdering_63131236Model.PHUONGXA">
+        <MappingFragment StoreEntitySet="PHUONGXA">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="QuanHuyen" ColumnName="QuanHuyen" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="QUANHUYENs">
+      <EntityTypeMapping TypeName="FoodOrdering_63131236Model.QUANHUYEN">
+        <MappingFragment StoreEntitySet="QUANHUYEN">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="TinhThanh" ColumnName="TinhThanh" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SANPHAMs">
+      <EntityTypeMapping TypeName="FoodOrdering_63131236Model.SANPHAM">
+        <MappingFragment StoreEntitySet="SANPHAM">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="MaLoai" ColumnName="MaLoai" />
+          <ScalarProperty Name="TenSP" ColumnName="TenSP" />
+          <ScalarProperty Name="TenDuongDan" ColumnName="TenDuongDan" />
+          <ScalarProperty Name="TomTat" ColumnName="TomTat" />
+          <ScalarProperty Name="NgayDangSP" ColumnName="NgayDangSP" />
+          <ScalarProperty Name="GiaBan" ColumnName="GiaBan" />
+          <ScalarProperty Name="GiaKM" ColumnName="GiaKM" />
+          <ScalarProperty Name="Dvt" ColumnName="Dvt" />
+          <ScalarProperty Name="KhuyenMai" ColumnName="KhuyenMai" />
+          <ScalarProperty Name="SoLuong" ColumnName="SoLuong" />
+          <ScalarProperty Name="AnhBia" ColumnName="AnhBia" />
+          <ScalarProperty Name="NdSanPham" ColumnName="NdSanPham" />
+          <ScalarProperty Name="LuotXem" ColumnName="LuotXem" />
+          <ScalarProperty Name="LuotMua" ColumnName="LuotMua" />
+          <ScalarProperty Name="DangSP" ColumnName="DangSP" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TAIKHOANs">
+      <EntityTypeMapping TypeName="FoodOrdering_63131236Model.TAIKHOAN">
+        <MappingFragment StoreEntitySet="TAIKHOAN">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="HoTen" ColumnName="HoTen" />
+          <ScalarProperty Name="TenTK" ColumnName="TenTK" />
+          <ScalarProperty Name="MatKhau" ColumnName="MatKhau" />
+          <ScalarProperty Name="NgayCap" ColumnName="NgayCap" />
+          <ScalarProperty Name="GioiTinh" ColumnName="GioiTinh" />
+          <ScalarProperty Name="SDT" ColumnName="SDT" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="DuocSD" ColumnName="DuocSD" />
+          <ScalarProperty Name="GhiChu" ColumnName="GhiChu" />
+          <ScalarProperty Name="Avatar" ColumnName="Avatar" />
+          <ScalarProperty Name="VaiTro" ColumnName="VaiTro" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TINHTHANHs">
+      <EntityTypeMapping TypeName="FoodOrdering_63131236Model.TINHTHANH">
+        <MappingFragment StoreEntitySet="TINHTHANH">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="THUVIENANHSP" TypeName="FoodOrdering_63131236Model.THUVIENANHSP" StoreEntitySet="THUVIENANHSP">
+      <EndProperty Name="ANH">
+        <ScalarProperty Name="ID" ColumnName="MaANH" />
+      </EndProperty>
+      <EndProperty Name="SANPHAM">
+        <ScalarProperty Name="ID" ColumnName="MaSP" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <FunctionImportMapping FunctionImportName="remov_file_anh" FunctionName="FoodOrdering_63131236Model.Store.remov_file_anh" />
+    <FunctionImportMapping FunctionImportName="rename_path_anh" FunctionName="FoodOrdering_63131236Model.Store.rename_path_anh" />
+  </EntityContainerMapping>
+</Mapping>
