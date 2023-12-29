@@ -145,7 +145,7 @@ namespace FoodOrdering63131236.Areas.Admin.Controllers
             List<TAIKHOAN> kt = db.TAIKHOANs.Where(x => x.Email == taiKhoan.Email && x.ID != taiKhoan.ID).ToList();
             if (kt.Count > 0)
             {
-                ModelState["email"].Errors.Add("Email đã tồn tại");
+                ModelState["Email"].Errors.Add("Email đã tồn tại");
                 luu = false;
             }
             kt = db.TAIKHOANs.Where(x => x.SDT == taiKhoan.SDT && x.ID != taiKhoan.ID).ToList();
@@ -154,6 +154,7 @@ namespace FoodOrdering63131236.Areas.Admin.Controllers
                 ModelState["SDT"].Errors.Add("Số điện thoại đã tồn tại");
                 luu = false;
             }
+
             if (!luu)
                 return View(taiKhoan1);
             taiKhoan1.HoTen = taiKhoan.HoTen;

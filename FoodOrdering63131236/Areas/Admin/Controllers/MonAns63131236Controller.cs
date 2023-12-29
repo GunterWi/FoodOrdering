@@ -126,6 +126,9 @@ namespace FoodOrdering63131236.Areas.Admin.Controllers
         }
         public ActionResult Edit(int id)
         {
+            // KHÔNG DÙNG ĐƯỢC MODEL LIST
+            /*MONAN monAns = db.MONANs.Where(x => x.ID == id).First();
+            return View(monAns);*/
             var monAns = db.MONANs;
             ViewBag.MONAN = (from ma in monAns where ma.ID == id select ma).ToList();
             return View();

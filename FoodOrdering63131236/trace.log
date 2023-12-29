@@ -77,3 +77,73 @@ SELECT TOP (4)
     [Extent1].[DangMA] AS [DangMA]
     FROM [dbo].[MONAN] AS [Extent1]
     WHERE ([Extent1].[MaLoai] = @p__linq__0) AND ([Extent1].[DangMA] = 1)
+Test
+47
+System.Data.Entity.DynamicProxies.MONAN_FC13BF3DA00D5B3F74944FC7A00580262BDC84362E622F81BF0CA5050D614D35
+SELECT TOP (4) 
+    [Extent1].[ID] AS [ID], 
+    [Extent1].[MaLoai] AS [MaLoai], 
+    [Extent1].[TenMA] AS [TenMA], 
+    [Extent1].[TenDuongDan] AS [TenDuongDan], 
+    [Extent1].[TomTat] AS [TomTat], 
+    [Extent1].[NgayDangMA] AS [NgayDangMA], 
+    [Extent1].[GiaBan] AS [GiaBan], 
+    [Extent1].[GiaKM] AS [GiaKM], 
+    [Extent1].[Dvt] AS [Dvt], 
+    [Extent1].[SoLuong] AS [SoLuong], 
+    [Extent1].[AnhBia] AS [AnhBia], 
+    [Extent1].[NdMon] AS [NdMon], 
+    [Extent1].[LuotXem] AS [LuotXem], 
+    [Extent1].[LuotMua] AS [LuotMua], 
+    [Extent1].[DangMA] AS [DangMA]
+    FROM [dbo].[MONAN] AS [Extent1]
+    WHERE ([Extent1].[GiaKM] < [Extent1].[GiaBan]) AND ([Extent1].[DangMA] = 1)
+SELECT TOP (4) 
+    [Extent1].[ID] AS [ID], 
+    [Extent1].[MaLoai] AS [MaLoai], 
+    [Extent1].[TenMA] AS [TenMA], 
+    [Extent1].[TenDuongDan] AS [TenDuongDan], 
+    [Extent1].[TomTat] AS [TomTat], 
+    [Extent1].[NgayDangMA] AS [NgayDangMA], 
+    [Extent1].[GiaBan] AS [GiaBan], 
+    [Extent1].[GiaKM] AS [GiaKM], 
+    [Extent1].[Dvt] AS [Dvt], 
+    [Extent1].[SoLuong] AS [SoLuong], 
+    [Extent1].[AnhBia] AS [AnhBia], 
+    [Extent1].[NdMon] AS [NdMon], 
+    [Extent1].[LuotXem] AS [LuotXem], 
+    [Extent1].[LuotMua] AS [LuotMua], 
+    [Extent1].[DangMA] AS [DangMA]
+    FROM [dbo].[MONAN] AS [Extent1]
+    WHERE ([Extent1].[MaLoai] = @p__linq__0) AND ([Extent1].[DangMA] = 1)
+Đơn hàng:
+ID: 3, Ngày Đặt: 27/10/2023 7:54:27 PM
+ID: 7, Ngày Đặt: 22/11/2023 7:54:27 PM
+ID: 8, Ngày Đặt: 21/11/2023 7:54:27 PM
+ID: 10, Ngày Đặt: 25/11/2023 7:54:27 PM
+ID: 15, Ngày Đặt: 25/11/2023 7:54:27 PM
+ID: 20, Ngày Đặt: 25/12/2023 7:54:27 PM
+ID: 29, Ngày Đặt: 29/12/2023 7:54:27 PM
+ID: 32, Ngày Đặt: 28/12/2023 7:33:20 PM
+Bình luận:
+ID: 5, Nội dung: @Nguyễn Quốc Thái ?123
+ID: 7, Nội dung: @Nguyễn Quốc Thái GÌ
+ID: 9, Nội dung: <a href = ''><strong>Nhân viên 1</strong></a>
+ID: 12, Nội dung: <a href = ''><strong>Nhân viên 1</strong></a>
+ID: 13, Nội dung: <a href = ''><strong>Nhân viên 1</strong></a>
+ID: 19, Nội dung: <a href = ''><strong>Nguyễn Quốc Thái</strong></a> Ổn not
+ID: 20, Nội dung: Món ăn như cut
+Test
+Test
+Ảnh cũ đã được xóa.
+Ảnh cũ đã được xóa.
+Ảnh cũ đã được xóa.
+C:\BaiTap\WebApp\FoodOrdering63131236\FoodOrdering63131236\Asset\Image\profile\313426286_501069548608369_6569937696525925716_n.jpg
+C:\BaiTap\WebApp\FoodOrdering63131236\FoodOrdering63131236\Asset\Image\profile\default.png
+C:\BaiTap\WebApp\FoodOrdering63131236\FoodOrdering63131236\Asset\Image\profile\354232389_3539303142956444_3034411996974486749_n.jpg
+C:\BaiTap\WebApp\FoodOrdering63131236\FoodOrdering63131236\Asset\Image\profile\default.png
+C:\BaiTap\WebApp\FoodOrdering63131236\FoodOrdering63131236\Asset\Image\profile\244786076_917247245549023_2274723715788787985_n.jpg
+đang chạy.
+đang chạy.
+đang chạy.
+đang chạy.

@@ -16,6 +16,12 @@
 
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
+    @if (TempData["Error"] != null)
+    {
+        <div class="alert alert-danger">
+            @TempData["Error"]
+        </div>
+    }
     <div class="content-header">
         <div class="container-fluid">
             <div class="row mb-2">
@@ -145,7 +151,7 @@
             <div class="modal-dialog modal-lg">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h4 class="modal-title">Thêm mới</h4>
+                        <h4 class="modal-title">Sửa loại món ăn</h4>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">×</span>
                         </button>

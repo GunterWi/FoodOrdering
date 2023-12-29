@@ -15,6 +15,12 @@
 }
 
 <div class="content-wrapper">
+    @if (TempData["Error"] != null)
+    {
+        <div class="alert alert-danger">
+            @TempData["Error"]
+        </div>
+    }
     <!-- Content Header (Page header) -->
     <div class="content-header">
         <div class="container-fluid">
@@ -109,8 +115,8 @@
                         @Html.TextBoxFor(m => m.TenDanhMuc, new { @class = "form-control mb-2 ml-sm-2" })
                         @Html.ValidationMessageFor(m => m.TenDanhMuc, "", new { style = "color:red" })
                         @*<label class="mb-2 ml-sm-2">Nhập tên đường dẫn</label>
-                        @Html.TextBoxFor(m => m.TenDuongDan, new { @class = "form-control mb-2 ml-sm-2", @readonly = "readonly" })
-                        @Html.ValidationMessageFor(m => m.TenDuongDan, "", new { style = "color:red" })*@
+                            @Html.TextBoxFor(m => m.TenDuongDan, new { @class = "form-control mb-2 ml-sm-2", @readonly = "readonly" })
+                            @Html.ValidationMessageFor(m => m.TenDuongDan, "", new { style = "color:red" })*@
                     </div>
                     <div class="modal-footer justify-content-between">
                         <button type="button" class="btn btn-default" data-dismiss="modal">Thoát</button>
@@ -140,8 +146,8 @@
                         @Html.TextBoxFor(m => m.TenDanhMuc, new { @class = "form-control mb-2 ml-sm-2" })
                         @Html.ValidationMessageFor(m => m.TenDanhMuc, "", new { style = "color:red" })
                         @*<label class="mb-2 ml-sm-2">Nhập tên đường dẫn</label>
-                        @Html.TextBoxFor(m => m.TenDuongDan, new { @class = "form-control mb-2 ml-sm-2" })
-                        @Html.ValidationMessageFor(m => m.TenDuongDan, "", new { style = "color:red" })*@
+                            @Html.TextBoxFor(m => m.TenDuongDan, new { @class = "form-control mb-2 ml-sm-2" })
+                            @Html.ValidationMessageFor(m => m.TenDuongDan, "", new { style = "color:red" })*@
                     </div>
                     <div class="modal-footer justify-content-between">
                         <button type="button" class="btn btn-default" data-dismiss="modal">Thoát</button>

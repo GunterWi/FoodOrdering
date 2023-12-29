@@ -87,6 +87,8 @@ namespace FoodOrdering63131236.Areas.Admin.Controllers
             }
             catch (Exception e)
             {
+                TempData["Error"] = "Lỗi khi xóa: " + e.Message;
+                return RedirectToAction("Index");
                 Console.WriteLine(e.Message);
             }
             return RedirectToAction("Index");

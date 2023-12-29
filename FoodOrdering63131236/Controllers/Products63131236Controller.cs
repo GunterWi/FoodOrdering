@@ -26,10 +26,10 @@ namespace FoodOrdering63131236.Controllers
         public ActionResult Product(string id)
         {
             var monAns = db.MONANs;
-            ViewBag.monAn = (from sp in monAns where sp.TenDuongDan.Equals(id) && sp.DangMA select sp).FirstOrDefault();
-            ViewBag.khuyenMai = (from sp in monAns where sp.GiaKM < sp.GiaBan && sp.DangMA select sp).Take(4);
-            int loaisp = ViewBag.monAn.MaLoai;
-            ViewBag.CungLoai = (from sp in monAns where sp.MaLoai == loaisp && sp.DangMA select sp).Take(4);
+            ViewBag.monAn = (from ma in monAns where ma.TenDuongDan.Equals(id) && ma.DangMA select ma).FirstOrDefault();
+            ViewBag.khuyenMai = (from ma in monAns where ma.GiaKM < ma.GiaBan && ma.DangMA select ma).Take(4);
+            int loaima = ViewBag.monAn.MaLoai;
+            ViewBag.CungLoai = (from ma in monAns where ma.MaLoai == loaima && ma.DangMA select ma).Take(4);
             MONAN monAn = ViewBag.monAn;
             monAn.LuotXem++;
             db.SaveChanges();
@@ -132,6 +132,7 @@ namespace FoodOrdering63131236.Controllers
                     //update session
                     user.RefreshUserData();
                     Session.Contents["Account"] = user;
+                    //TempData["AlertMessage"] = "Bạn đã đặt hàng thành công";
                     return Redirect(Url.Action("ProfileUser", "Users63131236", new { tab = "timeline" }));
                 }
                 catch (Exception e)
@@ -169,7 +170,7 @@ namespace FoodOrdering63131236.Controllers
             {   
                 foreach (MONAN s in db.MONANs)
                 {
-                    if (Trash_63131236.convertToUnSign3(s.TenMA).IndexOf(k) != -1) // nếu 
+                    if (Trash_63131236.convertToUnSign3(s.TenMA).IndexOf(k) != -1) // nếu có
                         monAns.Add(s);
                 }
             }

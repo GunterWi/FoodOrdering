@@ -18,6 +18,10 @@ namespace FoodOrdering63131236.Controllers
             ViewBag.loaiMons = loaiMons;
             return View();
         }
+        public ActionResult Admin()
+        {
+            return RedirectToAction("Index", "Dashboards63131236", new { area = "Admin" });
+        }
 
     }
 }

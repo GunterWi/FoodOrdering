@@ -94,6 +94,7 @@ namespace FoodOrdering63131236.Controllers
                     kh.DuocSD = true;
                     kh.NgayCap = DateTime.Now;
                     kh.VaiTro = "user";
+                    kh.Avatar = 59; // hiện tại cho là default, lười làm hàm tìm kiếm file ảnh default rồi gán ID, cho mặc định luôn =))
                     db.TAIKHOANs.Add(kh);
                     db.SaveChanges();
                     User_63131236 user = (User_63131236)Session.Contents["Account"];
@@ -124,27 +125,48 @@ namespace FoodOrdering63131236.Controllers
                 return HttpNotFound();
             }
 
+            string oldImagePath = null;
+
             if (Avatar != null)
             {
-                Trace.WriteLine("đã thành công.");
-                // Lưu tệp ảnh vào thư mục mong muốn 
+                // Nếu có ảnh cũ, lưu đường dẫn để xóa sau khi cập nhật cơ sở dữ liệu thành công
+                if (!string.IsNullOrEmpty(taiKhoan1.ANH.Url) && !taiKhoan1.ANH.Url.Equals("/Asset/Image/profile/default.png"))
+                {
+                    oldImagePath = Server.MapPath(taiKhoan1.ANH.Url);
+                }
+                // Lưu tệp ảnh mới
                 var imagePath = Server.MapPath("/Asset/Image/profile/");
                 var fileName = Path.GetFileName(Avatar.FileName);
-                var fullPath = Path.Combine(imagePath + fileName);
+                var fullPath = Path.Combine(imagePath, fileName);
                 Avatar.SaveAs(fullPath);
 
+                // Tạo đối tượng ảnh mới và thêm vào cơ sở dữ liệu
                 ANH newAvatar = new ANH() { Url = "/Asset/Image/profile/" + fileName };
-                taiKhoan1.Avatar = newAvatar.ID;
                 db.ANHs.Add(newAvatar);
+                db.SaveChanges();
+
+                taiKhoan1.Avatar = newAvatar.ID;
             }
 
+            // Cập nhật thông tin khác của tài khoản
             taiKhoan1.HoTen = Hoten;
             taiKhoan1.Email = Email;
             taiKhoan1.SDT = SDT;
+
             try
             {
+                // Cập nhật thông tin tài khoản trong cơ sở dữ liệu
                 user.Account = taiKhoan1;
                 db.SaveChanges();
+
+                // Nếu có ảnh cũ và cập nhật cơ sở dữ liệu thành công, xóa ảnh cũ
+                if (oldImagePath != null && System.IO.File.Exists(oldImagePath))
+                {
+                    Trace.WriteLine(oldImagePath);
+                    db.remov_file_anh(oldImagePath);
+                    db.SaveChanges();
+                    System.IO.File.Delete(oldImagePath);
+                }
             }
             catch (Exception e)
             {
@@ -153,8 +175,8 @@ namespace FoodOrdering63131236.Controllers
 
             return View(taiKhoan1);
             //return RedirectToAction("Index", "Homes63131236");
-
         }
+
 
         [HttpPost]
         public ActionResult ChangeMK(int id, string MatKhau, string xnMK)
