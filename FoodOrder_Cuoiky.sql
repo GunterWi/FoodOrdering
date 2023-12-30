@@ -229,9 +229,9 @@ GO
 INSERT INTO taiKhoan (HoTen, TenTK, MatKhau, NgayCap, GioiTinh, SDT, Email, DuocSD, GhiChu, Avatar, VaiTro) VALUES 
 (N'Nguyễn Quốc Thái', 'admin', '202cb962ac59075b964b07152d234b70', GETDATE(), 1, '0123254789', 'thai@example.com', 1, N'Admin',3, 'admin'),
 (N'Khách hàng 4', 'user4', '202cb962ac59075b964b07152d234b70', GETDATE(), 1, '0987654321', 'user4@example.com', 1, N'Khách hàng tiềm năng',4, 'user'),
-(N'Khách hàng 1', 'user1', '202cb962ac59075b964b07152d234b70', GETDATE(), 1, '0987654321', 'user1@example.com', 1, N'Khách hàng tiềm năng',5, 'user'),
-(N'Khách hàng 2', 'user2', '202cb962ac59075b964b07152d234b70', GETDATE(), 0, '0987654321', 'user2@example.com', 1, N'Khách hàng tiềm năng',6, 'user'),
-(N'Khách hàng 3', 'user3', '202cb962ac59075b964b07152d234b70', GETDATE(), 0, '0987654321', 'user3@example.com', 1, N'Khách hàng tiềm năng',7, 'user');
+(N'Khách hàng 1', 'user1', '202cb962ac59075b964b07152d234b70', GETDATE(), 1, '0987654322', 'user1@example.com', 1, N'Khách hàng tiềm năng',5, 'user'),
+(N'Khách hàng 2', 'user2', '202cb962ac59075b964b07152d234b70', GETDATE(), 0, '0987654323', 'user2@example.com', 1, N'Khách hàng tiềm năng',6, 'user'),
+(N'Khách hàng 3', 'user3', '202cb962ac59075b964b07152d234b70', GETDATE(), 0, '0987654324', 'user3@example.com', 1, N'Khách hàng tiềm năng',7, 'user');
 GO
 -- Danh mục
 INSERT INTO DANHMUC(TenDanhMuc) VALUES
